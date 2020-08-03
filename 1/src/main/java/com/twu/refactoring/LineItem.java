@@ -12,19 +12,36 @@ public class LineItem {
 		this.qty = qty;
 	}
 
-	public String getDescription() {
-		return desc;
+	public int getQty() {
+		return qty;
 	}
 
-	public double getPrice() {
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
+
+	public double getP() {
 		return p;
 	}
 
-	public int getQuantity() {
-		return qty;
+	public void setP(double p) {
+		this.p = p;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 
     double totalAmount() {
         return p * qty;
     }
+
+	public String toString(){
+		return desc+"\t"+p+"\t"+qty+"\t"+totalAmount()+"\n";
+	}
+
 }
