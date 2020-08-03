@@ -2,27 +2,28 @@ package com.twu.refactoring;
 
 public class Direction {
     private final char direction;
+    private char[] dir = {'N','E','S','W'};
 
     public Direction(char direction) {
         this.direction = direction;
     }
 
-    public Direction turnRight() {
+    public Direction turn(boolean left) {
         switch (direction) {
             case 'N':
-                return new Direction('E');
+                return new Direction(left? dir[3]:dir[1]);
             case 'S':
-                return new Direction('W');
+                return new Direction(left? dir[1]:dir[3]);
             case 'E':
-                return new Direction('N');
+                return new Direction(dir[0]);
             case 'W':
-                return new Direction('S');
+                return new Direction(dir[2]);
             default:
                 throw new IllegalArgumentException();
         }
     }
 
-    public Direction turnLeft() {
+    public Direction turnLeft(boolean left) {
         switch (direction) {
             case 'N':
                 return new Direction('W');

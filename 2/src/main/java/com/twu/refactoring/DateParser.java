@@ -13,15 +13,6 @@ public class DateParser {
         KNOWN_TIME_ZONES.put("UTC", TimeZone.getTimeZone("UTC"));
     }
 
-    /**
-     * Takes a date in ISO 8601 format and returns a date
-     *
-     * @param dateAndTimeString - should be in format ISO 8601 format
-     *                          examples -
-     *                          2012-06-17 is 17th June 2012 - 00:00 in UTC TimeZone
-     *                          2012-06-17TZ is 17th June 2012 - 00:00 in UTC TimeZone
-     *                          2012-06-17T15:00Z is 17th June 2012 - 15:00 in UTC TimeZone
-     */
     public DateParser(String dateAndTimeString) {
         this.dateAndTimeString = dateAndTimeString;
     }
@@ -89,8 +80,6 @@ public class DateParser {
                 throw new IllegalArgumentException("Minute cannot be less than 0 or more than 59");
 
         }
-
-
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
