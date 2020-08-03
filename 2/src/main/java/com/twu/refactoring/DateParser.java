@@ -7,7 +7,7 @@ import java.util.TimeZone;
 
 public class DateParser {
     private final String dateAndTimeString;
-    private static final HashMap<String, TimeZone> KNOWN_TIME_ZONES = new HashMap<String, TimeZone>();
+    private static final HashMap<String, TimeZone> KNOWN_TIME_ZONES = new HashMap<>();
 
     static {
         KNOWN_TIME_ZONES.put("UTC", TimeZone.getTimeZone("UTC"));
@@ -62,7 +62,7 @@ public class DateParser {
         if (date < 1 || date > 31)
             throw new IllegalArgumentException("Date cannot be less than 1 or more than 31");
 
-        if (dateAndTimeString.substring(11, 12).equals("Z")) {
+        if (dateAndTimeString.startsWith("Z", 11)) {
             hour = 0;
             minute = 0;
         } else {
@@ -89,6 +89,8 @@ public class DateParser {
                 throw new IllegalArgumentException("Minute cannot be less than 0 or more than 59");
 
         }
+
+
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
